@@ -71,10 +71,10 @@ https://crofle.store/
 #### Git-Flow 
 <img src="https://github.com/user-attachments/assets/fdb36828-a420-44bf-a740-9410a9dbe84e" height=300px>
 
-- 프론트엔드 :  Github-Flow 전략을 채택하였고 main, feature 브랜치를 사용하였습니다.
+- 프론트엔드 :  Github-Flow 전략을 채택하였고 main, feature 브랜치를 사용
     - 빠른 변화 및 테스트를 위하여 채택
       
-- 백엔드: Git-Flow 전략을 채택하였고 main, develop, feature, (release, hotfix) 브랜치를 사용하였습니다.
+- 백엔드: Git-Flow 전략을 채택하였고 main, develop, feature, (release, hotfix) 브랜치를 사용
     - 명확한 브랜치 구분을 통한 안정적 배포 프로세스 구축을 위하여 채택
     - release, hotfix는 배포 초기 단계라 활용 x
 <br>
@@ -98,44 +98,55 @@ https://crofle.store/
 
 <br>
 
-## 6. 구현 기능 ------------------------------------------------------------- 여기서 이어 작성하기
+## 6. 핵심 구현 기능
 
-#### 사용자
-
-
-#### 관리자
-
-
-[상세 기능](https://velog.io/@ybinn99/2%EC%B0%A8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9D%98%EC%95%BDWMS-%EC%9E%85%EA%B3%A0-%ED%8C%8C%ED%8A%B8-%EA%B8%B0%EB%8A%A5)
-해당 링크에서 입고 상세 기능을 확인하실 수 있습니다.
+https://github.com/user-attachments/assets/0f7c57a7-7104-47cd-967b-3f414ea99df0
+- 프로젝트(펀딩) 등록
+  - 프로젝트 등록 시 메이커는 1차(AI), 2차(관리자) 검토를 거쳐야만 프로젝트 등록이 가능
+  - 1차 검토 시 AI가 상품 기획서, 펀딩 기획서를 검토하게 되고 기본적인 프로젝트 정보에 대한 검토가 이루어 짐
+  - AI 검토 기준은 다음과 같고, 내부 검토 기준 80점 미만 시 반려 사유 제공
+  <img src="https://github.com/user-attachments/assets/df3d41e5-603a-41fe-a765-66dfd349abaa" height=300px>
+ 
+  <br>
+[상세 기능](https://velog.io/@ybinn99/%EC%B5%9C%EC%A2%85-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B5%AC%ED%98%84-%EA%B8%B0%EB%8A%A5)
+해당 링크에서 상세 기능 구현을 확인하실 수 있습니다.
 
 <br>
 
 ## 7. 트러블 슈팅
 
-- [조회 시 null 리턴 이슈](https://velog.io/@ybinn99/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85-ResultMap)
+- [예약 시스템 비관적 락 적용 이슈](https://velog.io/@ybinn99/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85-%EC%98%88%EC%95%BD-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%8F%99%EC%8B%9C%EC%84%B1-%EC%A0%9C%EC%96%B4)
 
-- [다중 쿼리 Update 불가 이슈](https://velog.io/@ybinn99/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85-Bulk-Update)
+- [엔티티 설계 후 N+1 문제](https://velog.io/@ybinn99/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85-%EC%97%94%ED%8B%B0%ED%8B%B0-%EC%84%A4%EA%B3%84-%ED%9B%84-N1-%EB%AC%B8%EC%A0%9C)
 
 <br>
 
 ## 8. 개선 목표
 
-- 예외 처리
-    - 우선 데이터를 웹으로 정확하게 전달을 우선시 하다보니 예외 처리를 제대로 하지 못하였습니다. 이 부분을 개선할 예정입니다.
-- 동시성 처리
-    - 하나의 입고 요청서에 대해 사용자와 창고 관리자가 접근하여 발생하는 문제에 대해 해결할 예정입니다.
-    - service 트랜잭션 처리 및 mod_date를 통한 판별 등을 통해 처리할 예정입니다.
+- 상품 상세 설명 이미지 
+    - 현재 상품 상세 설명 이미지를 입력 받을 때 긴 하나의 이미지를 받고 있음
+    - 이미지 용량 문제, 메이커의 불편 경험 존재
+    - 이미지 압축 알고리즘 적용 및 여러 이미지를 받는 로직으로 변경 예정
+- 라이브 방송 STATUS
+    - 급하게 로직을 변경함에 따라 라이브 방송 여부에 따른 상태 값을 ENUM이 아닌 숫자로 처리하고 의미를 부여
+    - ENUM으로 상태를 수정하고 그에 따른 로직 변경 예정
 
 <br>
 
 ## 9. 관련 링크
-[ERD](https://www.erdcloud.com/d/E6iQPxSRmuLZqKYCT)
+[ERD](https://www.erdcloud.com/d/KYPmJkkarumbWEtCu)
 
-[입고 유스케이스&플로우 차트](https://app.diagrams.net/#G1QmsZ-x5EELIP1d87eztQus2YOxYP_jqr#%7B%22pageId%22%3A%22tBj_1GJiwpTEB6AQOSF3%22%7D)
+[Notion](https://short-measure-b6e.notion.site/4-12630b3d969f808894eed78fea456c01?pvs=4)
 
 ## 10. 프로젝트 후기 및 회고록
 
-우선 단순히 WMS를 구축하는 것 뿐만이 아니라 의약품 창고에 대한 WMS를 설계했다는 점이 이번 프로젝트의 핵심이었습니다. 단순 물류 시스템을 뛰어넘어 의약, 제약 분야에 대한 관심을 웹 서비스로 나타낼 수 있어 좋았습니다. 구현에 있어 아쉬움은 많았지만 웹 서비스를 처음 구축했다는 점에 의의를 두고 차차 리팩토링하는 과정을 거쳐 성장해 나가겠습니다. 최종 프로젝트에서도 의미있는 프로젝트를 바탕으로 사용자 친화적 서비스를 제공하도록 하겠습니다.
+라이브 크라우드 펀딩은 사용자의 흥미를 얼마나 이끌어내는 지가 정말 중요한 요소입니다. 
+라이브 방송의 트래픽 증가는 곧 해당 펀딩의 인기를 뜻합니다. 고로 방송 시청 관련 데이터를 축적하여 유용한 데이터로 가공하고 우리의 서비스에 적용한다면 더욱 강력하고 인기있는 프로젝트가 될 것이라고 생각한다.
 
-[2차 프로젝트 회고록](https://velog.io/@ybinn99/%EC%8B%A0%EC%84%B8%EA%B3%84-%EC%95%84%EC%9D%B4%EC%95%A4%EC%94%A8-2%EC%B0%A8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9A%8C%EA%B3%A0%EB%A1%9D)
+
+팀 프로젝트 협업 면에서는 너무나 만족스러웠다. 일정 관리, 역할 분담, 의사소통 모두 잘 이루어졌다. 
+서투르지만 팀장으로서 팀 분위기를 잘 만들고 싶었고, 만족스러운 결과물을 만들어 내고 싶었다.
+팀원 분들 전부 큰 갈등없이 제 역할을 다 해주셔서 좋은 결과물을 만들어 낸 것 같다. 모두 감사합니다.
+
+
+[2차 프로젝트 회고록]()
